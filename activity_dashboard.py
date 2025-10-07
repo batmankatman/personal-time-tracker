@@ -482,78 +482,78 @@ def main():
                 )
                 st.plotly_chart(fig, use_container_width=True)
         
-        # Activity Detail Viewer by Category
-        if not filtered_df.empty:
-            st.markdown("##### Activity Details by Category")
-            # Exclude sleep (LO) from category selector
-            category_options = [k for k in ACTIVITY_CATEGORIES.keys() if k != 'LO']
-            selected_category = st.selectbox(
-                "Select Category",
-                options=category_options,
-                format_func=lambda x: f"{ACTIVITY_CATEGORIES[x]} ({x})",
-                key="category_selector"
-            )
-            
-            # Get activities for selected category
-            category_activities = filtered_df[filtered_df['category'] == selected_category].copy()
-            
-            if not category_activities.empty:
-                # Group by description and sum hours
-                activity_summary = category_activities.groupby('description')['duration_hours'].agg(['sum', 'count']).reset_index()
-                activity_summary.columns = ['Activity', 'Total Hours', 'Count']
-                activity_summary = activity_summary.sort_values('Total Hours', ascending=False)
-                
-                # Pagination for activities if too many
-                items_per_page = 10
-                total_items = len(activity_summary)
-                total_pages = (total_items + items_per_page - 1) // items_per_page
-                
-                if total_pages > 1:
-                    col1, col2, col3 = st.columns([1, 3, 1])
-                    with col2:
-                        page = st.select_slider(
-                            "Page",
-                            options=list(range(1, total_pages + 1)),
-                            key="activity_page"
-                        )
-                        # Pagination dots
-                        dots = "".join(["🔵" if i == page else "⚪" for i in range(1, min(total_pages + 1, 11))])
-                        st.markdown(f"<div style='text-align: center'>{dots}</div>", unsafe_allow_html=True)
-                else:
-                    page = 1
-                
-                # Display paginated activities
-                start_idx = (page - 1) * items_per_page
-                end_idx = start_idx + items_per_page
-                page_activities = activity_summary.iloc[start_idx:end_idx]
-                
-                # Display as a bar chart
-                fig = px.bar(
-                    page_activities,
-                    x='Total Hours',
-                    y='Activity',
-                    orientation='h',
-                    title=f"{ACTIVITY_CATEGORIES[selected_category]} Activities (Page {page}/{total_pages})",
-                    color='Total Hours',
-                    color_continuous_scale='Viridis'
-                )
-                fig.update_layout(
-                    height=min(350, len(page_activities) * 40 + 100),
-                    margin=dict(t=40, b=20, l=20, r=20),
-                    yaxis={'categoryorder': 'total ascending'}
-                )
-                st.plotly_chart(fig, use_container_width=True)
-                
-                # Show summary stats
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    st.metric("Total Hours", f"{activity_summary['Total Hours'].sum():.1f}h")
-                with col2:
-                    st.metric("Total Activities", len(activity_summary))
-                with col3:
-                    st.metric("Avg Hours/Activity", f"{activity_summary['Total Hours'].mean():.1f}h")
-            else:
-                st.info(f"No activities found for {ACTIVITY_CATEGORIES[selected_category]}")
+        # # Activity Detail Viewer by Category
+        # if not filtered_df.empty:
+        #     st.markdown("##### Activity Details by Category")
+        #     # Exclude sleep (LO) from category selector
+        #     category_options = [k for k in ACTIVITY_CATEGORIES.keys() if k != 'LO']
+        #     selected_category = st.selectbox(
+        #         "Select Category",
+        #         options=category_options,
+        #         format_func=lambda x: f"{ACTIVITY_CATEGORIES[x]} ({x})",
+        #         key="category_selector"
+        #     )
+        #     
+        #     # Get activities for selected category
+        #     category_activities = filtered_df[filtered_df['category'] == selected_category].copy()
+        #     
+        #     if not category_activities.empty:
+        #         # Group by description and sum hours
+        #         activity_summary = category_activities.groupby('description')['duration_hours'].agg(['sum', 'count']).reset_index()
+        #         activity_summary.columns = ['Activity', 'Total Hours', 'Count']
+        #         activity_summary = activity_summary.sort_values('Total Hours', ascending=False)
+        #         
+        #         # Pagination for activities if too many
+        #         items_per_page = 10
+        #         total_items = len(activity_summary)
+        #         total_pages = (total_items + items_per_page - 1) // items_per_page
+        #         
+        #         if total_pages > 1:
+        #             col1, col2, col3 = st.columns([1, 3, 1])
+        #             with col2:
+        #                 page = st.select_slider(
+        #                     "Page",
+        #                     options=list(range(1, total_pages + 1)),
+        #                     key="activity_page"
+        #                 )
+        #                 # Pagination dots
+        #                 dots = "".join(["🔵" if i == page else "⚪" for i in range(1, min(total_pages + 1, 11))])
+        #                 st.markdown(f"<div style='text-align: center'>{dots}</div>", unsafe_allow_html=True)
+        #         else:
+        #             page = 1
+        #         
+        #         # Display paginated activities
+        #         start_idx = (page - 1) * items_per_page
+        #         end_idx = start_idx + items_per_page
+        #         page_activities = activity_summary.iloc[start_idx:end_idx]
+        #         
+        #         # Display as a bar chart
+        #         fig = px.bar(
+        #             page_activities,
+        #             x='Total Hours',
+        #             y='Activity',
+        #             orientation='h',
+        #             title=f"{ACTIVITY_CATEGORIES[selected_category]} Activities (Page {page}/{total_pages})",
+        #             color='Total Hours',
+        #             color_continuous_scale='Viridis'
+        #         )
+        #         fig.update_layout(
+        #             height=min(350, len(page_activities) * 40 + 100),
+        #             margin=dict(t=40, b=20, l=20, r=20),
+        #             yaxis={'categoryorder': 'total ascending'}
+        #         )
+        #         st.plotly_chart(fig, use_container_width=True)
+        #         
+        #         # Show summary stats
+        #         col1, col2, col3 = st.columns(3)
+        #         with col1:
+        #             st.metric("Total Hours", f"{activity_summary['Total Hours'].sum():.1f}h")
+        #         with col2:
+        #             st.metric("Total Activities", len(activity_summary))
+        #         with col3:
+        #             st.metric("Avg Hours/Activity", f"{activity_summary['Total Hours'].mean():.1f}h")
+        #     else:
+        #         st.info(f"No activities found for {ACTIVITY_CATEGORIES[selected_category]}")
     
     else:
         st.error("⚠️ diaw.txt file not found. Please ensure the file exists in the current directory.")
