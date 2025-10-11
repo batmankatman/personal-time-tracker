@@ -23,7 +23,7 @@ st.set_page_config(
     page_title="Personal Time Tracker",
     page_icon="📊",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
 
 # Activity categories mapping (from analysis notebook)
@@ -281,6 +281,97 @@ def main():
         # Use all data without filters, but exclude sleep (LO) category from main visualizations
         filtered_df = activities_df[activities_df['category'] != 'LO']
         
+        # ========== SIDEBAR ==========
+        with st.sidebar:
+            st.markdown("### 📊 Filters & Options")
+            st.markdown("---")
+            
+            # Week Pair Filter
+            st.markdown("#### Week Pair Selection")
+            week_pair_options = ["All", "Weeks 1-2", "Weeks 3-4", "Weeks 5-6", "Weeks 7-8"]
+            selected_week_pair = st.select_slider(
+                "Select week pair to analyze",
+                options=week_pair_options,
+                value="All",
+                key="week_pair_filter"
+            )
+            
+            st.markdown("---")
+            
+            # Category Multi-Select
+            st.markdown("#### Category Filter")
+            category_options_list = [k for k in ACTIVITY_CATEGORIES.keys() if k != 'LO']
+            
+            # "All" checkbox
+            select_all_categories = st.checkbox("Select All Categories", value=True, key="select_all_cats")
+            
+            if select_all_categories:
+                selected_categories = st.multiselect(
+                    "Categories to display",
+                    options=category_options_list,
+                    default=category_options_list,
+                    format_func=lambda x: f"{ACTIVITY_CATEGORIES[x]} ({x})",
+                    key="category_multiselect",
+                    disabled=True
+                )
+            else:
+                selected_categories = st.multiselect(
+                    "Categories to display",
+                    options=category_options_list,
+                    default=['P', 'W'],
+                    format_func=lambda x: f"{ACTIVITY_CATEGORIES[x]} ({x})",
+                    key="category_multiselect"
+                )
+            
+            st.markdown("---")
+            
+            # Activity Browser
+            st.markdown("#### Activity Browser")
+            
+            # Search box
+            search_query = st.text_input(
+                "🔍 Search activities",
+                placeholder="Type to search...",
+                key="activity_search"
+            )
+            
+            # Category selector for activity browser
+            browser_category = st.selectbox(
+                "Select category to browse",
+                options=category_options_list,
+                format_func=lambda x: f"{ACTIVITY_CATEGORIES[x]} ({x})",
+                key="browser_category"
+            )
+            
+            # Filter and display activities
+            if browser_category:
+                category_activities = filtered_df[filtered_df['category'] == browser_category].copy()
+                
+                if not category_activities.empty:
+                    # Group by description and count
+                    activity_counts = category_activities.groupby('description').agg({
+                        'duration_hours': ['sum', 'count']
+                    }).reset_index()
+                    activity_counts.columns = ['Activity', 'Total Hours', 'Count']
+                    activity_counts = activity_counts.sort_values('Count', ascending=False)
+                    
+                    # Apply search filter
+                    if search_query:
+                        activity_counts = activity_counts[
+                            activity_counts['Activity'].str.contains(search_query, case=False, na=False)
+                        ]
+                    
+                    # Display in scrollable container
+                    st.markdown(f"**{len(activity_counts)} activities found**")
+                    
+                    # Create a scrollable display
+                    for idx, row in activity_counts.iterrows():
+                        st.text(f"• {row['Activity'][:40]}{'...' if len(row['Activity']) > 40 else ''}")
+                        st.caption(f"   Count: {int(row['Count'])} | Hours: {row['Total Hours']:.1f}h")
+                else:
+                    st.info(f"No activities in {ACTIVITY_CATEGORIES[browser_category]}")
+        
+        
         # Category distribution with toggle and Interesting Data side-by-side
         col1, col2 = st.columns(2)
         
@@ -361,7 +452,8 @@ def main():
                         course_df,
                         values='Hours',
                         names='Course',
-                        title=""
+                        title="",
+                        color_discrete_sequence=px.colors.diverging.PuOr
                     )
                     fig.update_layout(height=350, margin=dict(t=20, b=20, l=20, r=20))
                     fig.update_traces(textposition='inside', textinfo='percent+label')
@@ -376,7 +468,7 @@ def main():
                         x='sleep_duration_hours',
                         nbins=20,
                         title="",
-                        color_discrete_sequence=['#7B1FA2']
+                        color_discrete_sequence=[px.colors.diverging.PuOr[3]]
                     )
                     fig.update_layout(xaxis_title="Sleep Hours", yaxis_title="Frequency", 
                                     height=350, margin=dict(t=20, b=20, l=20, r=20))
@@ -411,7 +503,7 @@ def main():
                         y='avg_minutes',
                         title="",
                         color='avg_minutes',
-                        color_continuous_scale='Browns'
+                        color_continuous_scale='PuOr'
                     )
                     fig.update_layout(
                         height=350,
@@ -424,7 +516,9 @@ def main():
                 else:
                     st.info("No poop data found.")
         
-        # Week-by-Week Carousel Viewer
+        # Weekly Activity Distribution (Line Plot with 14-day averages)
+        st.markdown("##### Weekly Activity Distribution")
+        
         if not filtered_df.empty and filtered_df['parsed_date'].notna().any():
             # Group data into 7-day periods
             sorted_dates = filtered_df[filtered_df['parsed_date'].notna()].sort_values('parsed_date')
@@ -442,45 +536,91 @@ def main():
                         'dates': week_dates
                     })
             
-            if weeks:
-                # Week selector
-                week_options = [f"Week {w['week_num']}: {w['start_date']} to {w['end_date']}" for w in weeks]
-                selected_week_idx = st.select_slider(
-                    "Select Week",
-                    options=list(range(len(weeks))),
-                    format_func=lambda x: week_options[x],
-                    key="week_selector"
-                )
+            if weeks and len(weeks) >= 2:
+                # Filter data based on selected week pair
+                if selected_week_pair == "All":
+                    analysis_weeks = weeks
+                    title_suffix = "All Weeks"
+                else:
+                    # Parse week pair selection (e.g., "Weeks 1-2" -> weeks 0 and 1)
+                    pair_map = {
+                        "Weeks 1-2": [0, 1],
+                        "Weeks 3-4": [2, 3],
+                        "Weeks 5-6": [4, 5],
+                        "Weeks 7-8": [6, 7]
+                    }
+                    week_indices = pair_map.get(selected_week_pair, [0, 1])
+                    analysis_weeks = [weeks[i] for i in week_indices if i < len(weeks)]
+                    title_suffix = selected_week_pair
                 
-                selected_week = weeks[selected_week_idx]
+                # Calculate 14-day averages for each day of the week
+                # Each point represents the average of 2 corresponding days from the week pair
+                weekday_data = []
+                weekday_names = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
                 
-                # Filter data for selected week
-                week_mask = filtered_df['parsed_date'].dt.date.isin(selected_week['dates'])
-                week_data = filtered_df[week_mask]
+                for category in (selected_categories if not select_all_categories else category_options_list):
+                    cat_data = filtered_df[filtered_df['category'] == category]
+                    
+                    for day_idx in range(7):
+                        # Collect data for this day across the selected weeks
+                        day_hours = []
+                        
+                        for week in analysis_weeks:
+                            if day_idx < len(week['dates']):
+                                day_date = week['dates'][day_idx]
+                                day_activities = cat_data[cat_data['parsed_date'].dt.date == day_date]
+                                day_total = day_activities['duration_hours'].sum()
+                                day_hours.append(day_total)
+                        
+                        # Calculate average for this day
+                        avg_hours = np.mean(day_hours) if day_hours else 0
+                        
+                        weekday_data.append({
+                            'weekday': weekday_names[day_idx],
+                            'day_idx': day_idx,
+                            'category': category,
+                            'category_name': ACTIVITY_CATEGORIES[category],
+                            'avg_hours': avg_hours
+                        })
                 
-                # Create stacked bar chart for the week
-                week_daily = week_data.groupby(['parsed_date', 'category'])['duration_hours'].sum().reset_index()
-                week_daily['category_name'] = week_daily['category'].map(ACTIVITY_CATEGORIES)
-                week_daily['date_label'] = week_daily['parsed_date'].dt.strftime('%m/%d (%a)')
+                # Create DataFrame
+                weekday_df = pd.DataFrame(weekday_data)
                 
-                fig = px.bar(
-                    week_daily,
-                    x='date_label',
-                    y='duration_hours',
+                # Create line plot
+                fig = px.line(
+                    weekday_df,
+                    x='weekday',
+                    y='avg_hours',
                     color='category_name',
-                    title=f"Week {selected_week['week_num']} Activity Distribution",
-                    color_discrete_map={ACTIVITY_CATEGORIES[k]: v for k, v in FALL_COLORS.items()},
-                    text='duration_hours'
+                    title=f"14-Day Average Activity Distribution ({title_suffix})",
+                    markers=True,
+                    color_discrete_map={ACTIVITY_CATEGORIES[k]: v for k, v in FALL_COLORS.items()}
                 )
-                fig.update_traces(texttemplate='%{text:.1f}h', textposition='inside')
+                
                 fig.update_layout(
-                    height=350, 
-                    xaxis_title="Date", 
-                    yaxis_title="Hours",
+                    height=400,
+                    xaxis_title="Day of Week",
+                    yaxis_title="Average Hours",
                     margin=dict(t=40, b=20, l=20, r=20),
-                    showlegend=True
+                    showlegend=True,
+                    legend=dict(
+                        orientation="h",
+                        yanchor="bottom",
+                        y=-0.3,
+                        xanchor="center",
+                        x=0.5
+                    ),
+                    hovermode='x unified'
                 )
+                
+                # Add better hover information
+                fig.update_traces(
+                    hovertemplate='<b>%{fullData.name}</b><br>%{y:.2f} hours<extra></extra>'
+                )
+                
                 st.plotly_chart(fig, use_container_width=True)
+            else:
+                st.info("Need at least 2 weeks of data for trend analysis.")
         
         # # Activity Detail Viewer by Category
         # if not filtered_df.empty:
