@@ -53,7 +53,7 @@
 1100 F dawdle
 1050 R ready
 1045 W workout
-1040 F vista
+1040 F va
 1030 P work
 1025 P notes
 1005 R poop
@@ -158,7 +158,7 @@
 1845 S REU
 1825 R drive
 1820 R walk
-1815 F fashion show
+1815 F dressup
 1805 R ready
 1800 R walk
 1740 R poop
@@ -167,7 +167,7 @@
 1725 P school
 1720 S comm
 1620 P work
-1415 S comm
+1615 S comm
 1540 F nap
 1445 P school
 1440 P work
@@ -329,7 +329,7 @@
 0810 P notes
 0805 GOD pray
 0800 W stretch
-0755 F fashion show
+0755 F dressup
 0745 R ready
 
 7/19/25 Sa 0830-2345
@@ -409,7 +409,7 @@
 
 7/18/25 F 0755-0015
 0010 LO lo
-0005 F fashion show
+0005 F dressup
 2350 R ready
 2320 P work
 2300 F dawdle
@@ -606,7 +606,7 @@
 0755 R ready
 
 7/15/25 T 0805-2340
-2235 LO lo
+2335 LO lo
 2255 P notes
 2250 R ready
 2245 R walk
@@ -662,7 +662,7 @@
 2335 LO lo
 2315 F dawdle...
 2310 R ready
-2445 P work
+2245 P work
 2240 S comm
 2230 P work
 2225 S Victor
@@ -712,7 +712,7 @@
 0905 E eat
 0840 GOD qt
 0835 GOD pray
-0830 F fashion show
+0830 F dressup
 0825 E eat
 0810 R ready
 0805 F dawdle...
@@ -928,7 +928,7 @@
 1050 F yt
 1035 P notes
 1030 S comm
-1020 F vista
+1020 F va
 1000 R ready
 0930 R poop
 0915 F piano
@@ -957,7 +957,7 @@
 2150 P tm hw ITSC 3146
 2130 E cook
 2120 F think
-2110 F vista
+2110 F va
 2100 E cook
 2045 P notes
 2040 F article
@@ -1101,7 +1101,7 @@
 1715 R poop
 1710 E eat
 1705 S Cole
-1750 S Amir
+1700 S Amir
 1655 S Lydie
 1650 R walk
 1625 S Luke Joseph
@@ -1194,7 +1194,7 @@
 1140 R walk
 1125 P hw ITSC 3688
 1120 R walk
-1110 F vista
+1110 F va
 1005 P ITSC 3146
 1000 E eat
 0930 P hw ITSC 3688
@@ -1211,7 +1211,7 @@
 0710 E eat
 0700 R ready
 
-4/1/24 T 0815-0105
+4/1/25 T 0815-0105
 0100 LO lo
 0050 R ready
 0000 S Ritik
@@ -1292,7 +1292,7 @@
 1725 S church
 1720 GOD ministry
 1710 R walk
-1600 P STAT 3146
+1600 P ITSC 3146
 1555 S Ajay
 1545 R walk
 1515 P school
@@ -1378,7 +1378,7 @@
 2200 R ready
 2150 R shower
 2140 R poop
-2135 F vista
+2135 F va
 2130 E eat
 2050 P tm hw ITSC 3156
 2005 F yt
@@ -1429,7 +1429,7 @@
 1200 F music
 1145 GOD qt
 1140 F dawdle
-1135 F dress up
+1135 F dressup
 1130 F think
 1125 R ready
 1115 R laundry
@@ -1504,7 +1504,7 @@
 2105 S Ignite
 1725 GOD ministry
 1700 R drive
-1660 S Ritik
+1650 S Ritik
 1530 GOD ignite Bible study
 1515 S Andy
 1510 R walk
@@ -1613,7 +1613,7 @@
 1955 R walk
 1940 S Ignite
 1935 R walk
-1930 F worry
+1930 F dawdle
 1920 R shower
 1900 P tm hw ITSC 3146
 1855 P notes
@@ -1714,7 +1714,7 @@
 0920 R drive
 0915 R ready
 0900 E eat
-0855 F dress up
+0855 F dressup
 0850 R ready
 0840 R ready
 0835 F yt
@@ -1744,7 +1744,7 @@
 1845 R walk
 1755 W workout
 1745 S Tanmai
-1715 R walk
+1735 R walk
 1720 P hw ITSC 3153
 1715 R walk
 1555 P ITSC 3153
@@ -1792,10 +1792,10 @@
 2230 F yt
 2225 GOD ministry
 2220 S comm
-2215 F vista
+2215 F va
 2155 P notes
 2150 R drive
-2145 F think…
+2145 F think
 2140 S Stacey
 2130 R shop
 2125 R drive
@@ -1812,7 +1812,7 @@
 1800 R drive
 1745 S comm
 1740 R walk
-1720 F dawdle!!!
+1720 F dawdle...
 1710 P notes
 1705 R walk
 1655 R shower
@@ -1827,7 +1827,7 @@
 1220 F think
 1215 R drive
 1210 E eat
-1200 F shop
+1200 R shop
 1130 R drive
 1020 P business
 1010 P hw ITSC 2181
@@ -1836,7 +1836,7 @@
 0930 P business
 0910 E eat
 0845 P business
-0840 F dress up
+0840 F dressup
 0830 R ready
 0825 F various
 0800 P business
@@ -1862,7 +1862,7 @@
 1830 P notes
 1820 E eat
 1800 S comm
-1745 F vista
+1745 F va
 1700 P hw ITSC 2600
 1635 E eat
 1525 P hw ITSC 2600
@@ -1870,13 +1870,13 @@
 1510 W stretch
 1500 S comm
 1455 F reddit
-1450 F vista
+1450 F va
 1445 F eat
 1430 P business
 1415 F think
 1330 P business
 1305 F reddit
-1255 F vista
+1255 F va
 1245 R ready
 1220 E eat
 1210 R drive
@@ -1905,7 +1905,7 @@
 2215 R shower
 2205 R poop
 2105 F music
-2050 P hw MATH 3160
+2050 P hw STAT 3160
 2045 F dance
 2035 S comm
 2030 F dawdle
@@ -1942,11 +1942,11 @@
 1155 E eat
 1140 R ready
 1045 P hw ITSC 2600
-1035 F music/meta
+1035 F music
 1020 F politics
 1015 P hw ITSC 2181
 1010 P notes
-1005 F vista
+1005 F va
 1000 P notes
 0950 R ready
 0935 GOD qt
@@ -1958,7 +1958,7 @@
 0840 S Dan
 0820 E eat
 0800 R poop
-0755 F dress up
+0755 F dressup
 0740 R laundry
 0735 F sit in bed
 
@@ -2005,7 +2005,7 @@
 1110 P hw ITSC 2181
 1100 R shop
 1050 GOD qt
-1040 P hw iTSC 2181
+1040 P hw ITSC 2181
 1035 P notes
 1030 R shower
 0950 F dawdle
@@ -2028,15 +2028,15 @@
 2110 P notes
 2100 R shower
 2050 R shop
-2040 F vista
-2030 F Marco Polo
+2040 F va
+2030 S comm
 2020 R ready
 1945 E eat
 1940 R ready
 1930 R drive
 1920 R walk
 1915 S Eric
-1900 P research (running models debugging envs)
+1900 P research
 1855 F think
 1800 P hw ITSC 2181
 1740 S CAIR
@@ -2067,7 +2067,7 @@
 0920 GOD ignite
 0905 R walk
 0845 R drive
-0840 F dress up
+0840 F dressup
 0830 R ready
 0815 E eat
 0810 R ready
@@ -2090,10 +2090,10 @@
 1855 R walk
 1835 P hw ITSC 2181
 1830 P notes
-1825 F distracted
-1745 P research (model detailing)
-1740 F distracted
-1725 P research (model detailing)
+1825 F dawdle
+1745 P research
+1740 F dawdle
+1725 P research
 1720 P notes
 1715 S CAIR
 1700 E eat
@@ -2167,7 +2167,7 @@
 1535 S Sasha
 1455 W workout
 1450 R walk
-1445 F distracted
+1445 F dawdle
 1440 S comm
 1255 P research
 1235 R walk
@@ -2195,7 +2195,7 @@
 
 11/10/24 Su 0755-2305
 2300 LO lo
-2235 P research (poster/u net)
+2235 P research
 2230 P notes
 2220 R ready
 2150 E eat
@@ -2206,8 +2206,8 @@
 2105 S alexander
 1820 GOD ignite
 1815 R walk
-1755 P research (poster)
-1750 F distracted
+1755 P research
+1750 F dawdle
 1745 S comm
 1730 F vista auction 
 1720 R walk
@@ -2240,7 +2240,7 @@
 1040 R walk
 0925 GOD church
 0910 R drive
-0905 F dress up
+0905 F dressup
 0850 R ready
 0820 E eat
 0815 R cut
@@ -2256,7 +2256,8 @@
 2300 P school
 2240 F podcast
 2215 F music
-2115 F shop Christmas
+2200 F shop
+2115 R shop Christmas
 2110 R ready
 2045 E eat
 2030 R drive
@@ -2308,7 +2309,8 @@
 2310 S comm
 2305 R ready
 2300 F music
-2215 F shop
+2245 F shop
+2215 R shop
 2210 R clean
 2200 P notes
 2135 GOD journal
@@ -2352,7 +2354,7 @@
 0915 R ready
 0910 S comm
 0840 GOD qt
-0835 F distracted
+0835 F dawdle
 0830 S Dan Debbie
 0805 E eat
 
@@ -2373,18 +2375,18 @@
 2040 R walk
 2035 F dawdle
 1935 S CAIR
-1800 P research (presentation)
+1800 P research
 1750 E eat
 1745 R walk
 1730 P research
 1725 R walk
 1650 P research
-1600 P ITSC 2181 (+35 for research powerpoint)
+1600 P ITSC 2181
 1555 E eat
 1550 R walk
-1540 P research (tried liveshare)
+1540 P research
 1530 E eat
-1505 P research (Jupyter on better comp, fixed show rreults previously)
+1505 P research
 1455 R walk
 1445 R shower
 1440 W exercise
@@ -2400,7 +2402,7 @@
 1130 P ITSC 2181
 1115 R walk
 1105 R drive
-1100 F dress up
+1100 F dressup
 1050 R ready
 1040 R shower
 1030 R poop
@@ -2534,7 +2536,7 @@
 0040 P notes
 0035 R ready
 0025 R shower
-2355 F mess around music
+2355 F music
 2345 P tm hw ITSC 2600
 2340 F dawdle...
 2335 R ready
@@ -2630,7 +2632,7 @@
 2225 S tm Carter call
 2215 R clean
 2145 S Carter
-2140 F dawdle.?
+2140 F dawdle
 2135 R ready
 2045 F yt
 1915 E eat
@@ -2699,14 +2701,14 @@
 1530 P hw ITSC 2181
 1525 P notes
 1520 R walk
-1445 F nap in sun
+1445 F nap
 1430 P tm hw ITSC 3153
 1420 P tm hw ITSC 2181
 1415 S tm comm
 1345 P tm school
 1340 P tm notes
 1335 R ready
-1310 F nap in sun
+1310 F nap
 1255 R walk
 1250 R ready
 1245 R walk
@@ -2722,7 +2724,7 @@
 0940 R drive
 0935 S comm
 0930 P notes
-0910 F dawdle.?.
+0910 F dawdle
 0845 R ready
 0820 F piano
 0810 E eat
@@ -2732,7 +2734,7 @@
 9/21/24 Sa 0835-2340
 2335 LO lo
 2330 R ready
-2315 F heath Youtube
+2315 F yt
 2305 P hw STAT 3160
 2255 R clean
 2250 R shower
@@ -2740,7 +2742,7 @@
 2225 F staround…
 2125 F tm Aliexpress
 2120 R ready
-2110 F think…
+2110 F think
 2100 P notes
 2045 R ready
 2035 R ready
@@ -2751,7 +2753,7 @@
 1835 F sidetracked!
 1805 P hw STAT 3160
 1800 S Alex
-1740 F distracted in union
+1740 F dawdle
 1725 P hw STAT 3160
 1720 S AK
 1710 R walk
@@ -2764,7 +2766,7 @@
 1555 R walk
 1550 R shower
 1530 R poop
-1500 F nap in sun
+1500 F nap
 1440 GOD journal
 1430 P notes
 1315 W workout
@@ -2894,9 +2896,9 @@
 0930 R poop
 0905 P research
 0845 E eat
-0825 F nap..!…!
+0825 F nap
 0820 P research
-0800 F Stupid nap.!
+0800 F nap
 0755 P research
 0750 F mentally distracted.!.
 0740 P research
@@ -2913,9 +2915,9 @@
 2335 F dawdle...
 2325 R shower
 2310 R poop
-2305 F think…
+2305 F think
 2255 P notes
-2250 F think…!
+2250 F think
 2245 S comm
 2205 P tm research
 2155 P tm notes
@@ -2926,7 +2928,7 @@
 2020 F dawdle...
 2015 E eat
 2010 P notes
-1945 F music…
+1945 F music
 1855 E eat
 1830 R drive
 1815 R walk
@@ -2968,10 +2970,10 @@
 2325 R ready
 2320 R shower
 2315 F pull self together…
-2245 F STUPID NAP
-2200 F distracted
+2245 F nap
+2200 F dawdle
 2150 P research
-2135 F think… Reaching out…
+2135 F think
 2120 P tm research
 2100 F tm think…
 2055 P tm notes
@@ -3017,12 +3019,12 @@
 
 9/16/24 M 0740-0025
 0015 LO lo
-2330 F music AI dostraction
+2330 F music
 2255 P school
 2250 F notes
 2235 R ready
 2230 R shower
-2150 F STUPID NAP
+2150 F nap
 2135 P school
 2120 F article
 2115 F dawdle...
@@ -3075,7 +3077,7 @@
 1745 R drive
 1730 P school
 1715 F notes
-1710 F dress up
+1710 F dressup
 1705 R ready
 1700 E eat
 1655 R ready
@@ -3106,7 +3108,7 @@
 0825 E eat
 0815 GOD journal
 0800 P work
-0755 F lay in bed
+0755 F nap
 
 9/14/24 Sa 0840-2335
 2325 LO lo
@@ -3115,7 +3117,7 @@
 2250 R ready
 2245 R shower
 2225 R poop
-2200 F dawdling Youtube..
+2200 F yt
 2145 F Game Theory Study…
 2045 F yt
 2015 F Game Theory Study…
@@ -3135,7 +3137,7 @@
 1635 E eat
 1615 P work
 1610 R cut
-1555 F lay in sun
+1555 F nap
 1540 P work
 1530 E eat
 1515 R poop
@@ -3154,7 +3156,7 @@
 1025 R drive
 1020 R clean
 1010 GOD qt
-1005 F dress up
+1005 F dressup
 0930 R ready
 0910 E eat
 0905 R ready
@@ -3190,7 +3192,7 @@
 1245 F dawdle walk
 1230 S Yoshi, Bya, Obed, Julian
 1215 R walk
-1210 F distracted by nature/tired
+1210 F dawdle
 1155 R drive
 1145 P school
 1130 F music
@@ -3237,7 +3239,7 @@
 1535 R walk
 1520 R poop
 1500 P research
-1455 F walking distraction
+1455 F dawdle
 1450 E eat
 1440 R walk
 1410 S Dudes in EA comm
@@ -3257,7 +3259,7 @@
 1025 R ready
 1020 F think
 0925 P research
-0915 F distracted. Thinking (iPhone 16)
+0915 F dawdle
 0855 R poop
 0845 E eat
 0805 GOD qt
